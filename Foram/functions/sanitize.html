@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="base.css"/>
+    <title></title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var textarea = document.querySelector('textarea');
+            var sanitized = document.querySelectorAll('textarea')[1];
+            var div = document.body.lastElementChild;
+            console.log(textarea.value);
+
+            // * Look for changes made to the textarea
+            textarea.addEventListener('keypress', function (event) {
+                var str_unsan = textarea.value + String.fromCharCode(event.charCode);
+
+
+                var str_san = str_unsan.replace(/[^a-z0-9 ._]/gim, function (char) {
+                    return '&#x' + char.charCodeAt(0).toString(16) + ';';
+                });
+
+
+                sanitized.value = str_san;
+                div.innerHTML = str_san;
+            });
+        });
+    </script>
+</head>
+<body>
+    <textarea autofocus="autofocus" cols="30" rows="10"></textarea>
+    <textarea autofocus="autofocus" cols="30" rows="10"></textarea>
+    <div>aasdf 965851 . _ &#x3d;&#x2a;&#x21;&#x40;&#x23;&#x24;&#x25;&#x5e;&#x26;&#x2a;&#x28;&#x29;</div>
+</body>
+</html>
