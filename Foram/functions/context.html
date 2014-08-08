@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var obj = {
+            x: 32,
+            print: function () {
+                console.log(this.x);
+            },
+            address: {
+                x: 33,
+                print: function () {
+                    console.log(this.x);
+                }
+            }
+        };
+
+        obj.x();
+        obj.address.x();
+
+        function test() {
+            console.log(this);
+            var self = this;
+            ['asdf', 'asdf'].forEach(function () {
+
+                console.log(self); // access the global object here;
+            })
+        }
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

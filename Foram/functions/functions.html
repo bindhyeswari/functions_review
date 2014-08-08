@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+
+        var x = 10;
+        var obj = {x:11};
+        obj.fn = function test() {
+            (function () {
+                console.log(this.x);
+                console.log('hello world ... ');
+            } ());
+        };
+
+        obj.fn();
+
+
+
+        // * .call() does not pick up the global object in a specific scenario with this
+
+
+        // * Company constructors for cars
+
+        function Audi(make) {
+            for (var i = 0; i < Audi.makes.length; i++) {
+                if(Audi.makes[i].make === make) {
+                    this.make = make;
+                    this.engine = Audi.makes[i].enginesize;
+
+                }
+            }
+        }
+
+        Audi.prototype.logo = 'data:image/jpeg;base64,adsfasdf35465vasegasda53ds1gv5a34gaergareg';
+        Audi.prototype.printLogo = function () {
+            console.log(this.logo);
+        };
+
+        Audi.makes = [{
+            make: 'a4',
+            enginesize: '2.0L'
+        }, {
+            make: 'a6',
+            enginesize: '3.0L'
+        }];
+
+        function Honda(make) {
+            for (var i = 0; i < Honda.makes.length; i++) {
+                if(Honda.makes[i].make === make) {
+                    this.make = make;
+                    this.engine = Honda.makes[i].enginesize;
+
+                }
+            }
+        }
+
+        Honda.prototype.logo = 'data:image/jpeg;base64,adsfasdf35465vasegasda53ds1gv5a34gaergareg';
+        Honda.prototype.printLogo = function () {
+            console.log(this.logo);
+        };
+
+        Honda.makes = [{
+            make: 'civic',
+            enginesize: '1.8L'
+        }, {
+            make: 'accord',
+            enginesize: '2.5L'
+        }];
+
+        var a6 = new Audi('a6');
+        var civic = new Honda('civic');
+
+        console.log(a6.engine + ' vs ' + civic.engine);
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

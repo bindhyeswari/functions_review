@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+
+        // * Factory design pattern
+
+        // todo: Refactoring required (ABSOLUTELY)
+
+        function Car(){
+
+        }
+
+        Car.create = function (make) {
+
+            // Audi cars
+            Car.Audi = function (make) {
+                for (var i = 0; i < Car.Audi.makes.length; i++) {
+                    if(Car.Audi.makes[i].make === make) {
+                        this.make = make;
+                        this.engine = Audi.makes[i].enginesize;
+
+                    }
+                }
+            };
+            Car.Audi.prototype.logo = 'data:image/jpeg;base64,adsfasdf35465vasegasda53ds1gv5a34gaergareg';
+            Car.Audi.prototype.printLogo = function () {
+                console.log(this.logo);
+            };
+            Car.Audi.makes = [{
+                make: 'a4',
+                enginesize: '2.0L'
+            }, {
+                make: 'a6',
+                enginesize: '3.0L'
+            }];
+
+
+            // Honda cars
+            Car.Honda = function (make) {
+                for (var i = 0; i < Car.Honda.makes.length; i++) {
+                    if(Car.Honda.makes[i].make === make) {
+                        this.make = make;
+                        this.engine = Car.Honda.makes[i].enginesize;
+
+                    }
+                }
+            };
+            Car.Honda.prototype.logo = 'data:image/jpeg;base64,adsfasdf35465vasegasda53ds1gv5a34gaergareg';
+            Car.Honda.prototype.printLogo = function () {
+                console.log(this.logo);
+            };
+            Car.Honda.makes = [{
+                make: 'civic',
+                enginesize: '1.8L'
+            }, {
+                make: 'accord',
+                enginesize: '2.5L'
+            }];
+
+            var makeMapper = [
+                {
+                    manufacturer: 'Honda',
+                    makes: ['civic', 'accord']
+                },
+                {
+                    manufacturer: 'Audi',
+                    makes: ['a4', 'a6']
+                }
+            ];
+
+
+            var makes = []; var manufacturers = [];
+
+            for (var i = 0, len = makeMapper.length; i < len; i++) {
+                var obj = makeMapper[i];
+                for (var j = 0, len2 = obj.makes.length; j < len; j++) {
+                    // iterates over all the makes of the array
+                    makes.push(obj.makes[j]);
+                    manufacturers.push(obj.manufacturer);
+                }
+            }
+
+            // makes --> ['civic', 'accord', 'a4', 'a6']
+            // manufacturers --> ['Honda', 'Honda', 'Audi', 'Audi']
+
+
+            // find which manufacturer corresponds to the make
+            // checks if the make is value makes.indexOf(make) !== -1
+            var manufacturer = manufacturers[makes.indexOf(make)];
+
+            // * ==== Object creation part goes here =====
+
+            var car = new Car[manufacturer](make);
+
+
+
+        };
+
+
+        var civic = Car.create('civic');
+        var a4 = Car.create('a4');
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

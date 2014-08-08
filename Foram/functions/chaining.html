@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var o = {
+            printHello: function () {
+                console.log('HEllo World!');
+                return this;
+            },
+            square: function (x) {
+                console.log('Square of x is ' + x * x);
+                return this; // part responsible for chaining
+            }
+        };
+
+        var p = console.log('asdf');
+        console.log();
+
+        o.printHello();
+        o.square(32);
+
+        o.square(10).printHello();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

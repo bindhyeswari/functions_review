@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+
+        function returnSquaredSum(fn){
+            return function (x, y) {
+                var result = fn(x, y);
+                return result * result;
+            };
+        }
+
+        function invoke(fn){
+            var args = Array.prototype.slice.call(arguments);
+            console.log(args); // [add(), 10, 20]
+            fn.apply(null, args.slice(1));
+        }
+
+        invoke(add, 10, 20);
+
+        function add(x, y) {
+            return x + y;
+        }
+
+        add.cache = {
+            '1,2': 3
+        };
+
+        add.cache = {
+            test: 32
+        };
+
+        var squareSum = returnSquaredSum(add);
+
+        console.log(add_cached instanceof Function);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
